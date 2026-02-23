@@ -1,4 +1,5 @@
 package com.nisum.assignment.dtos;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -6,11 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreateCustomerRequestDto {
-
-    @NotBlank(message = "Name is required")
+public class UpdateCustomerRequestDto {
     public String name;
-
-    @NotBlank(message = "Address is required")
     public String address;
 }

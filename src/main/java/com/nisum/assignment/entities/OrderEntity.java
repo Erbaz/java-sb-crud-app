@@ -29,6 +29,9 @@ public class OrderEntity {
     @JoinColumn(name="customer_id", nullable=false)
     private CustomerEntity customer;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private java.util.List<OrderItem> orderItems;
+
     @Column(name="created_at", nullable=false, updatable=false)
     private Instant createdAt;
 
