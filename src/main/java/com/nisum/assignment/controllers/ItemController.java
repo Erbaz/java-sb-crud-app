@@ -1,9 +1,6 @@
 package com.nisum.assignment.controllers;
 
-import com.nisum.assignment.dtos.CreateItemRequestDto;
-import com.nisum.assignment.dtos.CreateItemResponseDto;
-import com.nisum.assignment.dtos.GetItemsRequestParamsDto;
-import com.nisum.assignment.dtos.ItemDto;
+import com.nisum.assignment.dtos.*;
 import com.nisum.assignment.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +33,18 @@ public class ItemController {
     public ResponseEntity<ArrayList<ItemDto>> getAllItems(@RequestParam GetItemsRequestParamsDto params) {
         ArrayList<ItemDto> response = itemService.getAllItems(params);
         return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<ItemDto> updateItem(@PathVariable UUID id, @Validated @RequestBody UpdateItemRequestDto item) {
+        ItemDto response = itemService.updateItem(id, item);
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteItem(@PathVariable UUID id) {
+        itemService.deleteItem(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

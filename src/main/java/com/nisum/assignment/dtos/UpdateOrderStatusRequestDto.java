@@ -1,19 +1,15 @@
 package com.nisum.assignment.dtos;
 
+import com.nisum.assignment.entities.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ItemDto {
-    public UUID id;
-    public String name;
-    public Double price;
-    public Integer quantity;
+public class UpdateOrderStatusRequestDto {
+    public OrderStatus status;
 }

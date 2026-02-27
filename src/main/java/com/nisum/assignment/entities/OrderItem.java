@@ -2,6 +2,8 @@ package com.nisum.assignment.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.UUID;
 
@@ -23,8 +25,9 @@ public class OrderItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ItemEntity item;
 
     @Column(nullable = false)
-    private int quantity;
+    private Integer quantity;
 }

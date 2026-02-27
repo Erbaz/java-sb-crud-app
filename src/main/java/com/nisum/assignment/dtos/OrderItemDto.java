@@ -11,9 +11,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ItemDto {
-    public UUID id;
-    public String name;
-    public Double price;
+public class OrderItemDto {
+    public UUID itemId;
     public Integer quantity;
 }
