@@ -22,6 +22,9 @@ public class CustomerEntity {
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID id;
 
+    @Column
+    private String email;
+
     @OneToMany(mappedBy="customer", cascade=CascadeType.ALL, orphanRemoval = true)
     private List<OrderEntity> orders = new ArrayList<>();
 
@@ -30,4 +33,7 @@ public class CustomerEntity {
 
     @Column
     private String address;
+
+    @Column
+    private String password;
 }

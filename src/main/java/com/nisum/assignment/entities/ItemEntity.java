@@ -15,6 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 public class ItemEntity {
+
     @Id
     @GeneratedValue
     @JdbcTypeCode(SqlTypes.VARCHAR)
@@ -22,5 +23,5 @@ public class ItemEntity {
 
     private String name;
 
-    private double price;
+    private Double price;
 }

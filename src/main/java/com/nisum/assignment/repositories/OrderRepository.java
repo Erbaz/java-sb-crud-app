@@ -21,7 +21,7 @@ public interface OrderRepository extends JpaRepository<OrderEntity, UUID> {
         SELECT o FROM OrderEntity o
         LEFT JOIN FETCH o.orderItems oi
         LEFT JOIN FETCH oi.item
-        WHERE o.customerId = :customerId
+        WHERE o.customer.id = :customerId
         """
     )
     List<OrderEntity> findByCustomerIdWithItems(UUID customerId);

@@ -12,6 +12,7 @@ import java.util.List;
 public class CustomerDto {
     public String id;
     public String name;
+    public String email;
     public String address;
     public List<OrderEntity> orders;
 }

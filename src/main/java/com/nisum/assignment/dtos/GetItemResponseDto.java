@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class CreateCustomerResponseDto {
-    public String id;
+public class GetItemResponseDto {
+    public UUID id;
     public String name;
-    public String email;
-    public String address;
+    public Double price;
 }

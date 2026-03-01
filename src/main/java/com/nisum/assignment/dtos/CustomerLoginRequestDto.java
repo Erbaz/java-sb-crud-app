@@ -6,12 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class CreateCustomerResponseDto {
-    public String id;
-    public String name;
+public class CustomerLoginRequestDto {
     public String email;
-    public String address;
+    public String password;
 }

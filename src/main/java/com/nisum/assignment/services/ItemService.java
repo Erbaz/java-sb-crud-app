@@ -18,41 +18,42 @@ public class ItemService {
         ItemEntity itemEntity = new ItemEntity();
         itemEntity.setName(item.name);
         itemEntity.setPrice(item.price);
+        ItemEntity savedItem = itemRepository.save(itemEntity);
         return CreateItemResponseDto.builder()
-                .id(itemEntity.getId())
-                .name(itemEntity.getName())
-                .price(itemEntity.getPrice())
+                .id(savedItem.getId())
+                .name(savedItem.getName())
+                .price(savedItem.getPrice())
                 .build();
     }
 
-    public ItemDto getItem(UUID id) {
+    public GetItemResponseDto getItem(UUID id) {
         ItemEntity itemEntity = itemRepository.findById(id).orElseThrow(() -> new RuntimeException("Item not found"));
-        return ItemDto.builder()
+        return GetItemResponseDto.builder()
                 .id(itemEntity.getId())
                 .name(itemEntity.getName())
                 .price(itemEntity.getPrice())
                 .build();
     }
 
-    public ArrayList<ItemDto> getAllItems(GetItemsRequestParamsDto params) {
+    public ArrayList<GetItemResponseDto> getAllItems(GetItemsRequestParamsDto params) {
         ArrayList<ItemEntity> itemEntities = (ArrayList<ItemEntity>) itemRepository.findByOptionalFilters(
                 params.getName().orElse(null),
                 params.getMinPrice().orElse(null),
                 params.getMaxPrice().orElse(null)
         );
-        ArrayList<ItemDto> itemDtos = new ArrayList<>();
+        ArrayList<GetItemResponseDto> items = new ArrayList<>();
         for (ItemEntity itemEntity : itemEntities) {
-            ItemDto itemDto = ItemDto.builder()
+            GetItemResponseDto item = GetItemResponseDto.builder()
                     .id(itemEntity.getId())
                     .name(itemEntity.getName())
                     .price(itemEntity.getPrice())
                     .build();
-            itemDtos.add(itemDto);
+            items.add(item);
         }
-        return itemDtos;
+        return items;
     }
 
-    public ItemDto updateItem(UUID id, UpdateItemRequestDto item) {
+    public GetItemResponseDto updateItem(UUID id, UpdateItemRequestDto item) {
         ItemEntity itemEntity = itemRepository.findById(id).orElseThrow(() -> new RuntimeException("Item not found"));
         if(item.name != null){
             itemEntity.setName(item.name);
@@ -62,7 +63,7 @@ public class ItemService {
         }
 
         ItemEntity updatedItem = itemRepository.save(itemEntity);
-        return ItemDto.builder()
+        return GetItemResponseDto.builder()
                 .id(updatedItem.getId())
                 .name(updatedItem.getName())
                 .price(updatedItem.getPrice())

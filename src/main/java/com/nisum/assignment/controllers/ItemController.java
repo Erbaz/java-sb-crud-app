@@ -24,20 +24,20 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ItemDto> getItem(@PathVariable UUID id) {
-        ItemDto response = itemService.getItem(id);
+    public ResponseEntity<GetItemResponseDto> getItem(@PathVariable UUID id) {
+        GetItemResponseDto response = itemService.getItem(id);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping
-    public ResponseEntity<ArrayList<ItemDto>> getAllItems(@RequestParam GetItemsRequestParamsDto params) {
-        ArrayList<ItemDto> response = itemService.getAllItems(params);
+    public ResponseEntity<ArrayList<GetItemResponseDto>> getAllItems(@RequestParam GetItemsRequestParamsDto params) {
+        ArrayList<GetItemResponseDto> response = itemService.getAllItems(params);
         return ResponseEntity.ok(response);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ItemDto> updateItem(@PathVariable UUID id, @Validated @RequestBody UpdateItemRequestDto item) {
-        ItemDto response = itemService.updateItem(id, item);
+    public ResponseEntity<GetItemResponseDto> updateItem(@PathVariable UUID id, @Validated @RequestBody UpdateItemRequestDto item) {
+        GetItemResponseDto response = itemService.updateItem(id, item);
         return ResponseEntity.ok(response);
     }
 
