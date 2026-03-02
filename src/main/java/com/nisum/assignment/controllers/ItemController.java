@@ -30,7 +30,7 @@ public class ItemController {
     }
 
     @GetMapping
-    public ResponseEntity<ArrayList<GetItemResponseDto>> getAllItems(@RequestParam GetItemsRequestParamsDto params) {
+    public ResponseEntity<ArrayList<GetItemResponseDto>> getAllItems(@ModelAttribute GetItemsRequestParamsDto params) {
         ArrayList<GetItemResponseDto> response = itemService.getAllItems(params);
         return ResponseEntity.ok(response);
     }

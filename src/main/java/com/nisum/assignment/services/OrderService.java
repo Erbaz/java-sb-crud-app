@@ -18,7 +18,11 @@ import java.util.UUID;
 public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
     private ItemRepository itemRepository;
 
 
@@ -69,6 +73,7 @@ public class OrderService {
             itemDto.quantity = oi.getQuantity();
             return itemDto;
         }).toList();
+        response.status = savedOrder.getStatus();
 
         return response;
     }

@@ -32,13 +32,8 @@ public class OrderEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private java.util.List<OrderItem> orderItems;
 
-    @Column(name="created_at", nullable=false, updatable=false)
-    private Instant createdAt;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable=false, length=20)
     private OrderStatus status = OrderStatus.INPROGRESS;
 
-    @Column(name="completed_at")
-    private Instant completedAt;
 }
